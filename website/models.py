@@ -18,9 +18,15 @@ class Produtos(models.Model):
     quantidade = models.IntegerField(default=1)
     tamanho = models.CharField(max_length=2,choices=opcoes_tamanho)
 
+    #metodo q retorna uma string mostrando os produtos na lista de admin django
+    def __str__(self):
+        return self.nome
+        
+    
+
 class Pedido(models.Model):
     metodo_pagamento = [
-       ('AV', 'Pagamento á vista'),
+       ('AV', 'Pagamento a vista'),
        ('P2', 'Parcelado em 2x'),
        ('P2', 'Parcelado em 3x'),
 
@@ -31,3 +37,7 @@ class Pedido(models.Model):
     email = models.EmailField()
     cartao = models.IntegerField()
     pagamento = models.CharField(max_length=2, choices=metodo_pagamento)
+
+    def __str__(self):
+        return self.nome
+    
